@@ -32,10 +32,9 @@ class TestProducts:
 
     def test_product_buy(self, product):
         # TODO напишите проверки на метод buy
-        # assert product.buy(100) != ValueError
         product.buy(20)
         assert product.quantity == 80
-        # assert product.buy(product.quantity) == 0
+        assert product.buy(product.quantity) == None
 
     def test_product_buy_more_than_available(self, product):
         # TODO напишите проверки на метод buy,
