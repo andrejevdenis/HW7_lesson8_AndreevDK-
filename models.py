@@ -1,3 +1,5 @@
+from itertools import product
+
 
 class Product:
     """
@@ -25,13 +27,12 @@ class Product:
             Если продуктов не хватает, то выбросите исключение ValueError
         """
         if self.check_quantity(quantity) is True:
-            return quantity
+            self.quantity -= quantity
         else:
             raise ValueError('Не достаточно товара на складе')
 
     def __hash__(self):
         return hash(self.name + self.description)
-
 
 class Cart:
     """
@@ -82,6 +83,7 @@ class Cart:
         Учтите, что товаров может не хватать на складе.
         В этом случае нужно выбросить исключение ValueError
         """
+
         for Product, quantity in self.products.items():
             Product.buy(quantity)
         self.clear()
